@@ -1,0 +1,40 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+h4 {
+    color: black;
+    margin-top: 1.5rem;
+}
+
+.table {
+    margin-top: 1rem;
+}
+
+.table th {
+    color: #495057;
+    background-color: #e9ecef;
+}
+
+.table .btn-sm {
+    padding: 0.25rem 0.5rem;
+}
+
+.img-fluid {
+    max-width: 50px;
+    height: auto;
+}
+
+.fa-star {
+    color: #ffc107;
+}
+
+.fa-star.checked {
+    color: #212529;
+}

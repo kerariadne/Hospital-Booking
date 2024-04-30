@@ -1,0 +1,151 @@
+<header class="header">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-2">
+                <div class="logo">
+                    <img [src]="logo" class="logo-img"
+                        >
+                    <span class="logo-text">კლინიკა</span>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <nav class="navigation">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/doctors" routerLinkActive="active">ექიმები</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/clinics" routerLinkActive="active">კლინიკები</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/annotations" routerLinkActive="active">ანოტაციები</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/promotions" routerLinkActive="active">აქციები</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/services" routerLinkActive="active">სერვისები</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/medicines" routerLinkActive="active">მედიკამენტები</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/contact" routerLinkActive="active">კონტაქტი</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-2">
+                <div class="login-registration btn" *ngIf="!loggedIn">
+                    <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                        id="login">ავტორიზაცია / </a>
+                    <a style="text-decoration: none;" routerLink="/register/user">რეგისტრაცია</a>
+                </div>
+
+                <ng-template class="login-registration btn"  *ngIf="loggedIn">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{name}} {{lastname}}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" (click)="logout()" href="#">გასვლა</a></li>
+                        </ul>
+                    </div>
+
+                </ng-template>
+            </div>
+            <div class="col-md-1">
+                <div class="language-changer">
+                    <button class="btn">
+                        <p>ENG</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+<div class="row justify-content-center modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="card-body ">
+                    <div class="modal-header">
+                        <h3 class="pt-3 font-weight-bold">ავტორიზაცია</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form [formGroup]="loginForm">
+                        <div class="form-group pt-4">
+                            <input type="text" class="form-control" formControlName="email"
+                                placeholder="ელ.ფოსტა / ტელეფონის ნომერი">
+                            <small class="text-danger"
+                                *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
+                                *email or phone is required
+                            </small>
+                        </div>
+                        <div class="form-group pt-3">
+                            <input type="password" class="form-control" formControlName="password" placeholder="პაროლი">
+                            <small class="text-danger"
+                                *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
+                                *password is required
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('minlength')">
+                                *password must be at least 8 characters
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('passwordStrength')">
+                                *password must contain numbers, symbols, upper and lower case letters
+                            </small>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4 mt-4">
+
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="forget"
+                                class="font-weight-bold">პაროლის აღდგენა</a>
+                        </div>
+                        <div *ngIf="loginError" class="error">Invalid email or password.</div>
+
+                        <button (click)="onLogin()" [disabled]="loginForm.invalid"
+                            class="btn enter mb-3">შესვლა</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="exampleModalLabel"> <span style="font-size: 25px; font-weight: 700">პაროლის
+                        აღდგენა</span><br>
+                    <small>შეიყვანეთ მეილი და დაელოდეთ ლინკს მეილზე</small>
+                </p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group pt-3">
+                    <div class="input-field"> <input type="text" (ngModelChange)="checkEmailValidation($event)"
+                            [(ngModel)]="resetPasswordByEmail" placeholder="Email"> </div>
+                </div>
+                <small *ngIf="!resetPasswordByEmail" class="text-danger">*Email is required*</small>
+                <small *ngIf="!isValidEmail && resetPasswordByEmail" class="text-danger">*Email is inavlid*</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">დახურვა</button>
+                <button type="button" (click)="confirmSend()" class="btn btn-primary">გაგზავნა</button>
+            </div>
+        </div>
+    </div>
+</div>

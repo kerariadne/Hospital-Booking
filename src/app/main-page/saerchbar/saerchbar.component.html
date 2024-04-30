@@ -1,0 +1,24 @@
+<div class="search-bar container-fluid">
+    <div class="row align-items-center justify-content-between">
+      <div class="phone-number col-md-4">
+        <i class="fa fa-phone" aria-hidden="true"></i>
+        <span>032 2 100 100</span>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"   style="color:#053354;"></i> <span> იაკობ ნიკოლაძე №10</span>
+        </div>
+      </div>
+  
+      <div class="col-md-3 px-0">
+        <input type="text"  [(ngModel)]="name"  placeholder="მოძებნე ექიმი სახელით" class="form-control search-input">
+      </div>
+      <div class="col-md-3 px-0 " id="searchSpec">
+        <input type="text"  [(ngModel)]="categoryName" placeholder="მოძებნე სპეციალობით" class="form-control search-input">
+      </div>
+      <div class="col-md-1 px-0">
+        <button  (click)="search()" class="btn search-button">
+          <i    class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  

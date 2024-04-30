@@ -1,0 +1,65 @@
+.search-bar {
+  padding: 40px;
+  background-color: #ECF2F8;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.phone-number {
+  display: flex;
+  align-items: center;
+  color: #053354;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.phone-number i,
+.location i {
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid white;
+  padding: 7px;
+}
+
+
+
+.search-input {
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  height: 40px;
+}
+
+.search-button {
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #053354;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.col-md-3,
+.col-md-1 {
+  padding: 0;
+}
+
+.search-input+.search-input {
+  margin-left: 15px;
+}
+
+#searchSpec {
+  margin-left: 2px;
+}

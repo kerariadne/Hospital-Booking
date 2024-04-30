@@ -1,0 +1,100 @@
+<app-header></app-header>
+<app-saerchbar></app-saerchbar>
+<div class="container py-5">
+    <h2 class="mb-4">ადმინის პანელი</h2>
+    <div class="mb-4">
+      <button class="btn btn-primary ml-4 m-4" routerLink="/register/user">მომხმარებლის შექმნა</button>
+      <button class="btn btn-primary ml-2" routerLink="/register/doctor">ექიმის შექმნა</button>
+    </div>
+  
+    <form class="form-inline mb-4" style="width: 500px;" (submit)="addAdmin()">
+        <h2 class="mb-4">ადმინის დამატება</h2>
+      <div class="form-group mb-2">
+        
+        <label for="email" class="sr-only">მეილი</label>
+        <input type="text" class="form-control" id="email" [(ngModel)]="adminData.email" name="email" placeholder="შეიყვანეთ იმეილი" required>
+      </div>
+      <div class="form-group  mb-2">
+        <label for="password" class="sr-only">პაროლი</label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="adminData.password" name="password" placeholder="შეიყვანეთ პაროლი" required>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">დამატება</button>
+    </form>
+  
+    <div class="card mb-4">
+      <div class="card-header">მომხმარებლები</div>
+      <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>სახელი</th>
+                    <th>მეილი</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.name }} {{ user.lastname}}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteUser(user.id)">წაშლა</button>
+                        <button class="btn btn-primary" (click)="updateUser(user.id, user)">რედაქტირება</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <div class="card mb-4">
+      <div class="card-header">ექიმები</div>
+      <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>სახელი</th>
+                    <th>მეილი</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let doctor of doctors">
+    
+                    <td>{{ doctor.name }} {{ doctor.lastname }}</td>
+                    <td>{{ doctor.email }}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteDoctor(doctor.id)">წაშლა</button>
+                        <button class="btn btn-primary" (click)="updateDoctor(doctor.id, doctor)">რედაქტირება</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="card-header">კატეგორიები</div>
+      <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>       
+                  <th>დასახელება</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let category of categories">
+                  <td>{{ category.name }}</td>
+                  <td>
+                    <button class="btn btn-danger" (click)="deleteCategory(category.id)">წაშლა</button>
+                    <button class="btn btn-primary" (click)="updateCategory(category)">რედაქტირება</button>
+                  </td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+
+  <app-footer></app-footer>

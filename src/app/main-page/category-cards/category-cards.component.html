@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <button type="button" *ngFor="let category of categories"
+          class="list-group-item list-group-item-action d-flex justify-content-between justify-content-center"
+          (click)="searchByCategoryName(category.name); $event.preventDefault()">
+          {{ category.name }}
+          <span class="badge bg-primary rounded-pill">{{ category.duplicateCount }}</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="doctor-card-container col-md-9">
+      <div *ngFor="let doctor of doctors" class="doctor-card">
+        <div class="doctor-card-header">
+          <!--[src]="'../../../../../Hospital-Booking-Page-BackEnd/Hospital-Booking-Page-BackEnd/wwwroot/' + doctor.thumbnail"-->
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/007/407/996/small/user-icon-person-icon-client-symbol-login-head-sign-icon-design-vector.jpg"
+            alt="Doctor's photo">
+        </div>
+        <div class="doctor-card-body">
+          <h5 class="doctor-name">{{ doctor.name }} {{doctor.lastName}}</h5>
+          <p class="doctor-info">{{ doctor.categoryName }}</p>
+
+          <div class="doctor-rating">
+            <span *ngFor="let r of [].constructor(5); let i = index">
+              <i class="star" [class.filled]="i < doctor.rating">&#9733;</i>
+            </span>
+          </div>
+          <button class="view-profile-btn">მიღებაზე ჩაწერა > </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

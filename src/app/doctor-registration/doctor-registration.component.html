@@ -1,0 +1,124 @@
+<app-header></app-header>
+<app-saerchbar></app-saerchbar>
+
+
+<div class="container  my-5 mb-5">
+    <h3 class="pt-3 font-weight-bold">რეგისტრაცია</h3>
+    <form [formGroup]="signUpForm"  enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div formControlName="name" class="form-group pt-3">
+                    <label for="name">სახელი</label>
+                    <input type="text" id="name" class="form-control" placeholder="( მინიმუმ 5 სიმბოლო )"
+                        formControlName="name" (input)="signUpForm.get('name')?.markAsTouched()">
+                    <small class="alert" class="form-control"
+                        *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.hasError('required')"
+                        class="text-danger">*name is required
+                    </small>
+                    <small class="alert" class="form-control"
+                        *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.hasError('minlength')"
+                        class="text-danger">*name must be at least 5 characters
+                    </small>
+                </div>
+
+                <div formControlName="lastname" class="form-group pt-3">
+                    <label for="lastname">გვარი</label>
+                    <input (input)="signUpForm.get('lastname')?.markAsTouched()" type="lastname" id="lastname"
+                        class="form-control" formControlName="lastname">
+                    <small class="alert"
+                        *ngIf="signUpForm.get('lastname')?.touched && signUpForm.get('lastname')?.hasError('required')"
+                        class="text-danger">*lastname is required
+                    </small>
+                </div>
+
+                <div formControlName="image" class="form-group pt-3">
+                    <label for="lastname">ფოტოსურათი</label>
+                    <input (change)="onPhotoFileChange($event)" class="form-control" name="image" formControlName="image" type="file" id="image" >
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <div formControlName="email" class="form-group pt-3">
+                    <label for="email">Email</label>
+                    <div class="input-group ">
+                        <input (input)="signUpForm.get('email')?.markAsTouched()" type="email" formControlName="email"
+                            class="form-control" placeholder="Email">
+
+                    </div>
+
+                    <small class="alert"
+                        *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.hasError('required')"
+                        class="text-danger">*email is required
+                    </small>
+
+                </div>
+
+
+                <div class="form-group pt-3">
+                    <label for="password">პაროლი</label>
+
+                    <input formControlName="password" type="password" id="password" class="form-control"
+                        placeholder="( მინიმუმ 8 სიმბოლო : @ 7 ,)"
+                        (input)="signUpForm.get('password')?.markAsTouched()">
+                    <small class="alert"
+                        *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.hasError('required')"
+                        class="text-danger">*password is required
+                    </small>
+                    <small class="alert"
+                        *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.hasError('minlength')"
+                        class="text-danger">*password must be at least 8 characters
+                    </small>
+                    <small class="alert"
+                        *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.hasError('passwordStrength')"
+                        class="text-danger">*password must contain numbers, symbols, upper and lower case letters
+                    </small>
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="cvFile">CV</label>
+                    <input  (change)="onCvFileChange($event)" class="form-control" type="file" id="cvFile" >
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+            
+
+                <div formControlName="personalNumber" class="form-group pt-3">
+                    <label for="personalNumber">პირადი ნომერი</label>
+                    <input (input)="signUpForm.get('personalNumber')?.markAsTouched()" type="personalNumber"
+                        id="personalNumber" placeholder="00000000000" class="form-control"
+                        formControlName="personalNumber">
+                    <small class="alert"
+                        *ngIf="signUpForm.get('personalNumber')?.touched && signUpForm.get('personalNumber')?.hasError('required')"
+                        class="text-danger">*personalNumber is required
+                    </small>
+                </div>
+
+
+                <div formControlName="categoryName" class="form-group pt-3">
+                    <label for="categoryName">კატეგორია</label>
+                    <input (input)="signUpForm.get('categoryName')?.markAsTouched()" type="categoryName"
+                        id="categoryName" placeholder="00000000000" class="form-control"
+                        formControlName="categoryName">
+                    <small class="alert"
+                        *ngIf="signUpForm.get('categoryName')?.touched && signUpForm.get('categoryName')?.hasError('required')"
+                        class="text-danger">*categoryName is required
+                    </small>
+                </div>
+
+
+                <div *ngIf="registerError" class="error">Registration failed. Please try again.</div>
+
+                <button (click)="onRegister()" [disabled]="signUpForm.invalid" type="submit"
+                    class="btn enter">რეგისტრაცია</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,96 @@
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+  background-color: #f4f4f4;
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.container-fluid {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+.doctor-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+
+}
+
+.doctor-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 250px;
+  overflow: hidden;
+  margin: 10px;
+  text-align: center;
+  height: 330px;
+}
+
+.doctor-card-header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+
+}
+
+.doctor-card-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-card-body {
+  padding: 15px;
+  text-align: center;
+}
+
+.doctor-name {
+  color: #333;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+
+
+.doctor-rating {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.star {
+  color: #ddd;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+.view-profile-btn {
+  background-color: rgba(228, 228, 228, 0.719);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+
+}
+
+.view-profile-btn:hover {
+  background-color: grey;
+}

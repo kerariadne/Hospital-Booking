@@ -1,0 +1,37 @@
+<app-header></app-header>
+<app-saerchbar></app-saerchbar>
+
+<div class="container mt-3">
+    <div *ngFor="let category of categories">
+        <h4>კატეგორიები</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>სახელი</th>
+                    <th>კატეგორია</th>
+                    <th>ფოტოსურათი</th>
+                    <th>რეიტინგი</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let doctor of category.doctors">
+                    <td>{{ doctor.name }} {{ doctor.surname }}</td>
+                    <td> {{ doctor.categoryName }}</td>
+                    <td><img [src]="doctor.thumbnail" class="img-fluid rounded-circle"></td>
+                    <td>
+                        <div *ngFor="let i of [1,2,3,4,5]; let index = index">
+                            <i class="fa fa-star" [class.checked]="index < doctor.rating"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-success btn-sm" (click)="editDoctor(doctor.id)">რედაქტირება</button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteDoctor(doctor.id)">წაშლა</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-footer></app-footer>

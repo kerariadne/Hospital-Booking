@@ -1,0 +1,16 @@
+footer {
+    background-color: #053354;;
+}
+
+a{
+    text-decoration: none;
+    padding: 2px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    color: #053354;
+    font-family: FiraGO;
+    margin-left: 5px;
+}

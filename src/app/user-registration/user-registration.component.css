@@ -1,0 +1,36 @@
+h3{
+  color:dodgerblue;
+}
+
+input {
+ 
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: white;
+}
+
+.btn {
+  background-color: #053354;
+  border: none;
+  border-radius: 50px;
+  margin-left: 45px;
+  width: 300px;
+  color: #F0FAFF;
+  font-size: 1rem;
+  margin-top: 30px;
+  font-weight: 600;
+
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+label{
+  font-size:16px;
+  color: rgb(48, 48, 48);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
